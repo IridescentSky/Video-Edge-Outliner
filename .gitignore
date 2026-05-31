@@ -1,2 +1,5 @@
 .venv
+functions/__pycache__
 /images
+/videos
+/frames
