@@ -8,6 +8,7 @@ def convertFrames(frames_path: str, start: int, end: int, step: int) -> int:
     Convert frames from original video to canny frames, returning the number of saved frames
     """
     frames_path = os.path.normpath(frames_path)
+
     os.makedirs(os.path.join(frames_path, "canny"), exist_ok=True)
     saved_count = 0
 

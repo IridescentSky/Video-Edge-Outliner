@@ -9,8 +9,19 @@ from tqdm import tqdm
 def framesToVideo(frames_path: str, frame_count: int, step: int, frame_width: int, frame_height: int, fps: int) -> None:
     frames_path = os.path.normpath(frames_path)
     
+    # Save Path
+    head, tail = os.path.split(frames_path)
+    os.makedirs(os.path.join("./", "output"), exist_ok=True)
+
+    # Find file name without the file type code
+    period_index = tail.rfind('.')
+    if period_index != -1:
+        file_name = tail[:period_index]
+
+    save_path = os.path.join("./",  "output", str(file_name) + "_output.mp4")
+
     fourcc = cv2.VideoWriter.fourcc(*'mp4v')
-    out = cv2.VideoWriter('output.mp4', fourcc, fps, (frame_width, frame_height), isColor=True)
+    out = cv2.VideoWriter(save_path, fourcc, fps, (frame_width, frame_height), isColor=True)
 
     print("Writing to Video...")
     for index in tqdm(range(0, frame_count, step)):
