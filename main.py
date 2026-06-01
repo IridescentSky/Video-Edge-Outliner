@@ -1,10 +1,16 @@
 import cv2
+import sys
 from functions.getResizeValues import getResizeValues
 from functions.videoToFrames import videoToFrames
 from functions.convertFrames import convertFrames
 from functions.framesToVideo import framesToVideo
 from functions.clearTempDirectories import clearTempDirectories
 
+# Input from Terminal
+args = sys.argv[1:]
+video_path = args[0]
+
+# Pipeline
 video_path = "videos/hand-heart.mp4"
 cap = cv2.VideoCapture(video_path)
 # https://stackoverflow.com/questions/39953263/get-video-dimension-in-python-opencv
