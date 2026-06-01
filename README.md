@@ -33,3 +33,4 @@ Running on a video
 python main.py <PATH_TO_VIDEO>
 ```
 
+Once the process is finished, the output video will be saved as ```./output/<VIDEONAME>_output.mp4```.
