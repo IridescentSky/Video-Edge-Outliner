@@ -1,2 +1,35 @@
 # Video-Edge-Outliner
-Script to convert videos to show only the object edge outlines.
+
+Python script to convert videos to a video map of the object edges. It will open a cv2 window showing output frames as it processes.
+
+
+Original             |  Output
+:-------------------------:|:-------------------------:
+![Hand gesture video](assets/hand-heart.gif)| ![Canny Edge Detection Output on hand heart gesture](assets/hand-heart-output.gif)
+
+It works well in an environment when there is a plain background and well-distinguishable objects, but it's a lot more noisy and inconsistent on most videos.
+
+## Inspiration
+I was inspired by the music video for Porter Robinson's "Look at the Sky" (https://www.youtube.com/watch?v=PuMz4v5PYKc), where he has abstract line art during the choruses. I wanted to make an edge detector so that I could make similar line art if I wanted to make a music video in the future, without requiring any artistic skill. I also wanted to learn a bit about CV to apply to a university design team in the future, so this worked out well as a beginner introduction to computer vision.
+
+## Setup
+### Instructions for Windows
+
+Cloning Repository
+```
+git clone https://github.com/IridescentSky/Video-Edge-Outliner.git
+cd Video-Edge-Outliner
+```
+
+Setting up virtual environment and installing requirements
+```
+python -m venv .venv
+.venv/Scripts/activate
+pip install -r requirements.txt
+```
+
+Running on a video
+```
+python main.py <PATH_TO_VIDEO>
+```
+
