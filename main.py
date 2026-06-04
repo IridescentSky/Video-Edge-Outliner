@@ -1,4 +1,5 @@
 import cv2
+import argparse
 import sys
 from functions.getResizeValues import getResizeValues
 from functions.videoToFrames import videoToFrames
@@ -7,11 +8,28 @@ from functions.framesToVideo import framesToVideo
 from functions.clearTempDirectories import clearTempDirectories
 
 # Input from Terminal
-args = sys.argv[1:]
-video_path = args[0]
+parser = argparse.ArgumentParser(
+    prog='Video-Edge-Outliner',
+    description= \
+    'Python script to convert videos to a video map of the object edges. It will open a cv2 window showing output frames as it processes.' ,
+    epilog='Run "python main.py <VIDEO_NAME> --low-threshold=<OPTIONAL_ARG_VALUE> --high-threshold=<OPTIONAL_ARG_VALUE>',
+)
 
+parser.add_argument('filename')
+parser.add_argument('--low_threshold', type=int)
+parser.add_argument('--high_threshold', type=int)
+args = parser.parse_args()
+
+video_path = args.filename
+low_threshold = args.low_threshold
+high_threshold = args.high_threshold
+
+if low_threshold == None:
+    low_threshold = 50
+if high_threshold == None:
+    high_threshold = 120
+    
 # Pipeline
-video_path = "videos/hand-heart.mp4"
 cap = cv2.VideoCapture(video_path)
 # https://stackoverflow.com/questions/39953263/get-video-dimension-in-python-opencv
 if cap.isOpened():
