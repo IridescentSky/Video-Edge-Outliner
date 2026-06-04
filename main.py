@@ -1,5 +1,6 @@
 import cv2
 import argparse
+from argparse import RawTextHelpFormatter
 import sys
 from functions.getResizeValues import getResizeValues
 from functions.videoToFrames import videoToFrames
@@ -11,8 +12,11 @@ from functions.clearTempDirectories import clearTempDirectories
 parser = argparse.ArgumentParser(
     prog='Video-Edge-Outliner',
     description= \
-    'Python script to convert videos to a video map of the object edges. It will open a cv2 window showing output frames as it processes.' ,
-    epilog='Run "python main.py <VIDEO_NAME> --low-threshold=<OPTIONAL_ARG_VALUE> --high-threshold=<OPTIONAL_ARG_VALUE>',
+    """Python script to convert videos to a video map of the object edges. It will open a cv2 window showing output 
+    frames as it processes. Find your output video under ./output 
+
+    low-threshold defaults to 50, and high-threshold defaults to 120""",
+    formatter_class=RawTextHelpFormatter
 )
 
 parser.add_argument('filename')
@@ -28,7 +32,7 @@ if low_threshold == None:
     low_threshold = 50
 if high_threshold == None:
     high_threshold = 120
-    
+
 # Pipeline
 cap = cv2.VideoCapture(video_path)
 # https://stackoverflow.com/questions/39953263/get-video-dimension-in-python-opencv

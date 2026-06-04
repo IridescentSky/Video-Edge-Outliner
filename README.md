@@ -33,4 +33,10 @@ Running on a video
 python main.py <PATH_TO_VIDEO>
 ```
 
+You can also set optional Low_Threshold and High_Threshold options that control the bounds for Canny Edge Detection with 
+```
+python main.py <PATH_TO_VIDEO> --low_threshold=<VALUE> --high_threshold=<VALUE>
+```
+**LOW THRESHOLD DEFAULTS TO 50, AND HIGH THRESHOLD DEFAULTS TO 120**
+
 Once the process is finished, the output video will be saved as ```./output/<VIDEONAME>_output.mp4```.
