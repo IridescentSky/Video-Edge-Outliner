@@ -1,8 +1,6 @@
 import cv2
 import os
 import numpy as np
-import ffmpeg
-import subprocess
 from tqdm import tqdm
 
 # Code based off https://www.geeksforgeeks.org/python/saving-a-video-using-opencv/
@@ -39,7 +37,3 @@ def framesToVideo(frames_path: str, frame_count: int, step: int, frame_width: in
 
     cv2.destroyAllWindows
     out.release()
-
-    # # Compressing - https://stackoverflow.com/questions/64421177/how-to-compress-a-video-using-ffmpeg-in-python
-    # print("Compressing Output to 800k Bit Rate")
-    # subprocess.run('ffmpeg -i output.mp4 -b 800k output_compressed.mp4')
